@@ -19,7 +19,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.6"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "yard", "~> 0.8"
-  spec.add_development_dependency "redcarpet"
+  spec.add_dependency "rake"
+  spec.add_dependency "yard", "~> 0.8"
+  spec.add_dependency "redcarpet"
+  spec.add_dependency "activerecord"
+  spec.add_dependency "sqlite3", "~> 1.3.9"
 end
