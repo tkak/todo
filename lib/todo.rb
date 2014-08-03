@@ -1,6 +1,7 @@
 #require 'todo/command'
 require 'todo/version'
 require 'todo/db'
+require 'todo/task'
 
 module Todo
   # Your code goes here...
