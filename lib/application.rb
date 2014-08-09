@@ -11,6 +11,11 @@ module Todo
       DB.prepare
     end
 
+    configure :development do
+      require 'sinatra/reloader'
+      register Sinatra::Reloader
+    end
+
     get '/' do
       redirect '/tasks'
     end
