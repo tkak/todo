@@ -1,10 +1,23 @@
 require 'sinatra/base'
 require 'haml'
 
+require 'todo/db'
+require 'todo/task'
+
 module Todo
   class Application < Sinatra::Base
 
+    configure do
+      DB.prepare
+    end
+
     get '/' do
+      redirect '/tasks'
+    end
+
+    get '/tasks' do
+      @tasks = Task.all
+
       haml :index
     end
 
