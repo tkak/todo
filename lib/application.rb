@@ -1,10 +1,11 @@
 require 'sinatra/base'
+require 'haml'
 
 module Todo
   class Application < Sinatra::Base
 
     get '/' do
-      'todo application'
+      haml :index
     end
 
   end
