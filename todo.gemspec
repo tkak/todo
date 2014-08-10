@@ -23,5 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "yard", "~> 0.8"
   spec.add_dependency "redcarpet"
   spec.add_dependency "activerecord"
-  spec.add_dependency "sqlite3", "~> 1.3.9"
+  spec.add_dependency "sqlite3", "~> 1.3.0"
+  spec.add_dependency "sinatra", "~> 1.4.0"
+  spec.add_dependency "haml", "~> 4.0.0"
 end
