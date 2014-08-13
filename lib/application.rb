@@ -62,9 +62,13 @@ module Todo
     end
 
     get '/tasks/:id/edit' do
-      @task = Task.find(params[:id])
+      begin
+        @task = Task.find(params[:id])
 
-      haml :edit
+        haml :edit
+      rescue ActiveRecord::RecordNotFound
+        error 404
+      end
     end
 
     post '/tasks' do
@@ -93,8 +97,24 @@ module Todo
         @task = e.record
 
         haml :edit
+      rescue ActiveRecord::RecordNotFound
+        error 404
       end
     end
 
+    delete '/tasks/:id' do
+      begin
+        task = Task.find(params[:id])
+        task.destroy
+
+        redirect '/'
+      rescue ActiveRecord::RecordNotFound
+        error 404
+      end
+    end
+
+    not_found do
+      haml :not_found
+    end
   end
 end
