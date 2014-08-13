@@ -9,6 +9,12 @@ module Todo
 
     set :haml, escape_html: true
 
+    helpers do
+      def error_class(task, name)
+        task.errors.has_key?(name) ? 'has-error' : ''
+      end
+    end
+
     configure do
       DB.prepare
     end

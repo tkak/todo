@@ -1,20 +1,9 @@
 %h1 New Task
 
-- if @task.errors.any?
-  .alert.alert-danger
-    %ul
-      - @task.errors.full_messages.each do |msg|
-        %li= msg
+!= haml :_errors, locals: {task: @task}
 
 %form.form-horizontal(method='post' action='/tasks')
-  .from-group.has-feedback{class: (@task.errors.has_key?(:name) ? 'has-error' : '')}
-    %label.control-label(for='task_name') Name
-    .controls
-      %input#task_name.span3(name='name' placeholder='e.g. go shopping' type='text'){value: @task.name}
-  .from-group.has-feedback{class: (@task.errors.has_key?(:content) ? 'has-error' : '')}
-    %label.control-label(for='task_content') Content
-    .controls
-      %input#task_content.span5(name='content' placeholder='e.g. buy milk' type='text'){value: @task.content}
+  != haml :_form, locals: {task: @task}
   .from-group.has-feedback
     .controls
       %input.btn.btn-primary(name='commit' type='submit' value='Create')
