@@ -1,21 +1,21 @@
 %h1 New Task
 
 - if @task.errors.any?
-  .alert.alert-error
+  .alert.alert-danger
     %ul
       - @task.errors.full_messages.each do |msg|
         %li= msg
 
 %form.form-horizontal(method='post' action='/tasks')
-  .control-group{class: (@task.errors.has_key?(:name) ? 'error' : '')}
+  .from-group.has-feedback{class: (@task.errors.has_key?(:name) ? 'has-error' : '')}
     %label.control-label(for='task_name') Name
     .controls
       %input#task_name.span3(name='name' placeholder='e.g. go shopping' type='text'){value: @task.name}
-  .control-group{class: (@task.errors.has_key?(:content) ? 'error' : '')}
+  .from-group.has-feedback{class: (@task.errors.has_key?(:content) ? 'has-error' : '')}
     %label.control-label(for='task_content') Content
     .controls
       %input#task_content.span5(name='content' placeholder='e.g. buy milk' type='text'){value: @task.content}
-  .control-group
+  .from-group.has-feedback
     .controls
-      %input.btn(name='commit' type='submit' value='Create')
+      %input.btn.btn-primary(name='commit' type='submit' value='Create')
 

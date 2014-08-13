@@ -1,0 +1,29 @@
+%h1 Editing Task
+
+- if @task.errors.any?
+  .alert.alert-error
+  %ul
+    - @task.errors.full_messages.each do |msg|
+      %li = msg
+
+%form.form-horizontal(method='post'){action: "/tasks/#{@task.id}"}
+  .control-group{class: (@task.errors.has_key?(:name) ? 'danger' : '')}
+    %label.control-label(for='task_name') Name
+    .controls
+      %input#task_name.span3(name='name' placeholder='e.g. buying' type='text'){value: @task.name}
+  .control-group{class: (@task.errors[:name].empty? ? '' : 'danger')}
+    %label.control-label(for='task_content') Content
+    .controls
+      %input#task_name.span3(name='content' placeholder='e.g. buy milk' type='text'){value: @task.content}
+  .control-group
+    %label.control-label(for='task_status') Status
+    .controls
+      %select#task_status(name='status')
+        %option(value='0'){selected: @task.status == 0} NOT_YET
+        %option(value='1'){selected: @task.status == 1} DONE
+        %option(value='2'){selected: @task.status == 2} PENDING
+  .control-group
+    %input(name='_method' type='hidden' value='put')
+    .controls
+      %input.btn.btn-primary(name='commit' type='submit' value='Update')
+

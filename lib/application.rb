@@ -46,6 +46,12 @@ module Todo
       haml :new
     end
 
+    get '/tasks/:id/edit' do
+      @task = Task.find(params[:id])
+
+      haml :edit
+    end
+
     post '/tasks' do
       begin
         Task.create!(name: params[:name], content: params[:content])
