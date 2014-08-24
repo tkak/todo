@@ -1,0 +1,16 @@
+.from-group{class: error_class(task, :name)}
+  %label.col-sm-5.control-label(for='task_name') Name
+  .controls.has-feedback
+    %input.col-sm-7.form-control#task_name(name='name' placeholder='e.g. go shopping' type='text'){value: @task.name}
+.from-group{class: error_class(task, :content)}
+  %label.col-sm-5.control-label(for='task_content') Content
+  .controls
+    %input.col-sm-7.form-control#task_content(name='content' placeholder='e.g. buy milk' type='text'){value: @task.content}
+
+- if task.persisted?
+  .form-group
+    %label.control-label(for='task_status') Status
+    .controls
+      %select.form-control#task_status(name='status')
+        != options_for_task_status(task)
+
