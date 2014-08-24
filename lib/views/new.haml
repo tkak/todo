@@ -5,6 +5,6 @@
 %form.form-horizontal(method='post' action='/tasks')
   != haml :_form, locals: {task: @task}
   .from-group.has-feedback
-    .controls
-      %input.btn.btn-primary(name='commit' type='submit' value='Create')
+    .controls.col-sm-5
+      %input.col-sm-7.btn.btn-primary(name='commit' type='submit' value='Create')
 
